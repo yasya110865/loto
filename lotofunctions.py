@@ -80,3 +80,7 @@ class Computer:
             else:
                 pass
 
+player = Computer()
+if isinstance(player,Computer):
+   print('yes')
+

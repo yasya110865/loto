@@ -39,7 +39,7 @@ while True:
     for i in range(num_players):
         #если игрок еще в игре
         if players[i] not in failed:
-        # card = create_card()
+
             print(f'Карта игрока {names[i]},число {n} ')
             loto.print_card(cards[i])
             if isinstance(players[i], loto.Computer):
@@ -52,12 +52,13 @@ while True:
 
                 # если неправильный выбор - проигрыш, конец игры
                 elif action == 'y' and not any(n in sl for sl in cards[i])\
-                    or action == 'n' and  any(n in sl for sl in cards[i]):
+                    or action == 'n' and any(n in sl for sl in cards[i]):
                 # elif action == 'y' and n not in cards[i][0] and n not in cards[i][1] and n not in cards[i][2] \
                 #         or action == 'n' and n in cards[i][0] or n in cards[i][1] or n in cards[i][2]:
 
                         print(f'Игрок {names[i]} проиграл!')
                         failed.append(players[i])
+                print(f'Счет игрока {players[i].count}')
 
     if len(failed) == num_players:
         print('Игра окончена!')

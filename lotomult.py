@@ -32,22 +32,12 @@ def create_card():
     for i in range(3):
         row, num = create_row(num=num)
         card.append(row)
-    # row1, num1 = create_row()
-    # row2, num2 = create_row(num=num1)
-    # row3, num3 = create_row(num=num2)
-    # card.append(row1)
-    # card.append(row2)
-    # card.append(row3)
 
     return card
-
 def print_card(card):
     '''
     печать карточки
-    :param row1: первый ряд
-    :param row2: второй ряд
-    :param row3: третий ряд
-    :return:
+    :param card: список из трех рядов цифр
     '''
     print('-'* 23)
     print(' '.join(map(str, card[0])))
@@ -65,18 +55,13 @@ class Person:
         '''
         зачеркивание числа, совпадающего с заданным
         :param n: заданное число
-        :param lst: списки чисел с карточки
+        :param card: списки чисел с карточки
         :return:
         '''
-
-
         for i in range(3):
             if n in card[i]:
                 card[i][card[i].index(n)] = '-'
                 self.count += 1
-
-
-
 class Computer:
     def __init__(self):
         self.count = 0
@@ -85,8 +70,7 @@ class Computer:
             if n in card[i]:
                 card[i][card[i].index(n)] = '-'
                 self.count += 1
-            else:
-                pass
+
 if __name__ =='__main__':
     #выбираем количество и тип игроков
     num_players = int(input('Сколько будет игроков? '))

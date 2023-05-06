@@ -1,5 +1,5 @@
 # import lotoclasses as loto
-from lotoclasses import Person, Computer, Game
+from lotofunctions2 import Person, Computer, Game
 
 def test_card():
     player = Person()

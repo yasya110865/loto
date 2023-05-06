@@ -1,5 +1,5 @@
 import random
-import lotofunctions as loto
+import lotofunctions0 as loto
 
 #создание карточек для игроков
 row1, row2, row3 = loto.create_card()

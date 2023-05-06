@@ -14,7 +14,6 @@ def test_getrandomnum():
     assert len(game.bag) == 89
 def test_player_delete():
     player = Person()
-    card = player.card
     for i in player.card[0]:
         if type(i) == int:
             n = i
@@ -42,7 +41,6 @@ def test_player_delete():
 
 def test_computer_delete():
     player = Computer()
-    # card = player.card
     for i in player.card[0]:
         if type(i) == int:
             n = i

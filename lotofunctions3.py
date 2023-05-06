@@ -1,8 +1,6 @@
 import random
 
 class Card:
-    # def __init__(self):
-    #     self.card = self.create_card()
 
     def create_card(self):
         num = list(range(1, 91))

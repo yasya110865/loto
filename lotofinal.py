@@ -3,6 +3,9 @@ import random
 class Card:
 
     def create_card(self):
+        '''
+        создание карты  в виде списка из трех рядов чисел
+        '''
         num = list(range(1, 91))
         card = []
         for i in range(3):
@@ -19,12 +22,6 @@ class Card:
         return f'{card[0]}\n {card[1]}\n{card[2]}'
 
 
-    def change_num(self,n,card):
-        for i in range(3):
-            if n in card[i]:
-                card[i][card[i].index(n)] = '-'
-
-
 class Person:
     '''
     игрок
@@ -34,22 +31,34 @@ class Person:
         self.name = None
         card = Card()
         self.card = card.create_card()
+
     def __str__(self):
         return f'{self.name}, счет игрока {self.count}'
+
     def __eq__(self, other):
         return self.step == other.step
 
     def print_card(self):
+        '''
+        печать карты игроку
+        '''
         print('-' * 23)
         print(' '.join(map(str, self.card[0])))
         print(' '.join(map(str, self.card[1])))
         print(' '.join(map(str, self.card[2])))
         print('-' * 23)
     def change_num(self,n):
+        '''
+        изменение номера на прочерк, если он есть в карте
+        '''
         for i in range(3):
             if n in self.card[i]:
                 self.card[i][self.card[i].index(n)] = '-'
     def __len__(self):
+        '''
+        длина множества(уникальные значения) суммы трех рядов карты -
+        для проверки что закончились числа. В конце игры должны остаться только пробелы и прочерки
+        '''
         return len(set(self.card[0] + self.card[1] + self.card[2]))
 
     def step(self, n):
@@ -57,7 +66,7 @@ class Person:
         зачеркивание числа, совпадающего с заданным
         :param n: заданное число
 
-        :return:
+        :return: результат, продолжать или заканчивать игру
         '''
         self.print_card()
         if len(self) <= 3:
@@ -81,6 +90,9 @@ class Person:
             res = False
         return res
 class Computer(Person):
+    '''
+    тип игрока - бот, производное от класса Person, но другой метод step
+    '''
     def step(self, n):
         self.print_card()
         if len(self) <= 3:
@@ -92,10 +104,14 @@ class Computer(Person):
         return res
 
 class Game:
+    '''
+    игра
+    '''
     def __init__(self):
         self.players = []
         self.bag = random.sample(list(range(1, 91)), 90)
         self.result = None
+
     def __str__(self):
         return f'количество игроков: {len(self.players)}, результат: {self.result}'
 
@@ -109,6 +125,9 @@ class Game:
 
 
     def game_start(self):
+        '''
+        начало игры - определение количества и типов игроков
+        '''
         self.num_players = int(input('Сколько будет игроков? '))
         print('1. Человек')
         print('2. Компьютер')
@@ -126,9 +145,13 @@ class Game:
             self.players.append(player)
 
     def game_play(self):
+        '''
+        процесс игры
+        '''
         self.game_start()
         self.result = True
         failed = []
+
         while  self.result == True:
             # случайный бочонок
             n = self.get_random_num()
@@ -166,5 +189,5 @@ if __name__ == '__main__':
     game = Game()
     print(game)
     game.game_play()
-    print(game)
+
 
